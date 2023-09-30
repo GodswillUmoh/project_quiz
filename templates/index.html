@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <img src="static/uploads/header.jpeg" width="1250", height="400">
+    <h1>Welcome to e-Learning Tutor Web App</h1><br>
+    <p>English is the official language of Nigeria and a global language. Hence, it is 
+        a language that must be learnt to aid effective communication. 
+    </p><br>
+    <p> The Study of the English Language will help young people communicate with people 
+        from other countries. </p><br>
+
+    <p>It can also help secure a good job. The problem is that many a student 
+        assume they understand the subject <br>only to findout that they knew nothing when 
+        result is out.
+    </p><br>   
+    <h2>You can try our free resources</h2> 
+    <h1>Quiz On Rhyme</h1>
+    <form action="/submit" method="POST">
+        {% for question in questions %}
+            <p>{{ question['question'] }}</p>
+            {% for option in question['options'] %}
+                <input type="radio" name="{{ question['id'] }}" value="{{ option }}"> {{ option }}<br>
+            {% endfor %}
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+    <img src="static/uploads/Organizers.png" alt="E-Tutor">
+</body>
+</html>
